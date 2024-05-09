@@ -1,5 +1,6 @@
 const form = document.querySelector("[data-form]");
 const result = document.querySelector("[data-result]");
+const error = document.querySelector("[data-error]");
 
 form.addEventListener("submit", (event) => {
   event.preventDefault();
