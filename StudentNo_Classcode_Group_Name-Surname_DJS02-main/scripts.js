@@ -20,11 +20,14 @@ form.addEventListener("submit", (event) => {
     result.innerText = ''; // Clears previous result if any
   } else {
     // Convert inputs to numbers
-    const dividendNum = parseFloat(dividend);
+    const dividendNum = parseFloat(dividend); // Convert the string to a floating-point number
     const dividerNum = parseFloat(divider);
 
     // Check if inputs are valid numbers - using isNan
-
+    if (isNaN(dividendNum) || isNaN(dividerNum)) {
+      error.innerText = "Please enter valid numbers.";
+      result.innerText = ''; // Clears previous result if any
+    }
   }
 
 
