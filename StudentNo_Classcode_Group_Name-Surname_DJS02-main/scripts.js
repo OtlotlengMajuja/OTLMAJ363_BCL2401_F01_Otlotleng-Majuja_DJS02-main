@@ -25,8 +25,14 @@ form.addEventListener("submit", (event) => {
 
     // Check if inputs are valid numbers - using isNan
     if (isNaN(dividendNum) || isNaN(dividerNum)) {
-      error.innerText = "Please enter valid numbers.";
-      result.innerText = ''; // Clears previous result if any
+      error.innerText = "Division not performed. Both values are required in inputs. Try again.";
+      result.innerText = '';
+    } else if (dividerNum === 0) {
+      error.innerText = "Division not performed. Invalid number provided. Try again";
+      result.innerText = '';
+    } else {
+      // Display the message
+      error.innerText = ''; //Clears any previous error message
     }
   }
 
