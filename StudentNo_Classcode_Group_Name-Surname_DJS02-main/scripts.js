@@ -6,9 +6,14 @@ form.addEventListener("submit", (event) => {
   const entries = new FormData(event.target);
   const { dividend, divider } = Object.fromEntries(entries);
   result.innerText = dividend / divider;
-});
 
-// Check if the dividend is 20 and the divider is 3 to round the answer tho a whole number
-if (parseInt(dividend) === 20 && parseInt(divider) === 3) {
-  result.innerText = Math.floor(quotient); // Rounds the answer down to th the nearest whole number
-}
+  // Calculate the answers without decimals
+  const answer = Math.floor(dividend / divider);
+
+  // Display the answer
+  result.innerText = answer;
+
+
+
+
+});
