@@ -14,6 +14,11 @@ form.addEventListener("submit", (event) => {
   // Display the answer
   result.innerText = answer;
 
+  // Checking for empty inputs
+  if (dividend.trim() === '' || divider.trim() === '') {
+    error.innerText = "Please fill out both fields with values.";
+    result.innerText = ''; // Clears previous result if any
+  }
 
 
 
