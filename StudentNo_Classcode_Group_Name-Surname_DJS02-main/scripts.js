@@ -18,6 +18,13 @@ form.addEventListener("submit", (event) => {
   if (dividend.trim() === '' || divider.trim() === '') {
     error.innerText = "Please fill out both fields with values.";
     result.innerText = ''; // Clears previous result if any
+  } else {
+    // Convert inputs to numbers
+    const dividendNum = parseFloat(dividend);
+    const dividerNum = parseFloat(divider);
+
+    // Check if inputs are valid numbers - using isNan
+
   }
 
 
