@@ -46,9 +46,7 @@ form.addEventListener("submit", (event) => {
         result.innerText = Math.floor(dividend / divider);
       }
     }
-  } catch (error) {
-    console.error("Something went wrong:", error);
-    result.innerText = ''; // Clear previous result if any
-    error.innerText = "Something went wrong. Check console for details.";
+  } catch (error) { // Catch any errors that might occur during execution and log error stack to console.
+    console.log(error.stack);
   }
 }); 
