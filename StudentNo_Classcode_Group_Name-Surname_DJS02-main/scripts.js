@@ -6,7 +6,7 @@ form.addEventListener("submit", (event) => {
   event.preventDefault();
   const entries = new FormData(event.target);
   const { dividend, divider } = Object.fromEntries(entries);
-  result.innerText = dividend / divider;
+
 
   try {
     // Calculate the answers without decimals
@@ -36,9 +36,14 @@ form.addEventListener("submit", (event) => {
         result.classList.add("error-message");
         result.innerText = "Division not performed. Invalid number provided. Try again";
         throw new Error("Invalid result, divider cannot be zero.");
+      } else if (dividend.match(/[^0-9]/) || divider.match(/[^0-9]/)) { //Checking for non-numeric characters in the dividend or divider values using regular expressions. Creating a new <div> with "critical-error" class, set its text content as "Something critical went wrong. Please reload the page", append it to the document.body, and throw an error. 
+        const criticalError = document.createElement("div");
+        criticalError.classList.add("critical-error");
+        criticalError.textContent = "Something critical went wrong. Please reload the page"
+        document.body.append(criticalError);
+        throw new Error("Invalid number");
       } else {
-        // Display the message
-        error.innerText = ''; //Clears previous error messages
+
       }
     }
   } catch (error) {
