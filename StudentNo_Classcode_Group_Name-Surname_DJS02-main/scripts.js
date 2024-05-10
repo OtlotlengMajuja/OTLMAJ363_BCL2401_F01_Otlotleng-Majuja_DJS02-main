@@ -16,7 +16,10 @@ form.addEventListener("submit", (event) => {
     result.innerText = answer;
 
     // Checking for empty inputs
-    if (dividend.trim() === '' || divider.trim() === '') {
+    // Check if critical text values are entered
+    if (dividend.trim().toUpperCase() === 'YOLO' && divider.trim() === '+++') {
+      document.body.innerHTML = '<h1>Something critical went wrong. Please reload the page.</h1>';
+    } else if (dividend.trim() === '' || divider.trim() === '') {
       error.innerText = "Please fill out both fields with values.";
       result.innerText = ''; // Clears previous result if any
     } else {
@@ -25,9 +28,10 @@ form.addEventListener("submit", (event) => {
       const dividerNum = parseFloat(divider);
 
       // Check if inputs are valid numbers - using isNan
-      if (isNaN(dividendNum) || isNaN(dividerNum)) {
-        error.innerText = "Division not performed. Both values are required in inputs. Try again.";
-        result.innerText = '';
+      if (!dividendNum || !dividerNum) {
+        result.classList.add("error-message");
+        result.innerText = "Division not performed. Both values are required in inputs. Try again.";
+        throw new Error("Both values required in inputs.");
       } else if (dividerNum === 0) {
         error.innerText = "Division not performed. Invalid number provided. Try again";
         result.innerText = '';
@@ -41,4 +45,4 @@ form.addEventListener("submit", (event) => {
     result.innerText = ''; // Clear previous result if any
     error.innerText = "Something went wrong. Check console for details.";
   }
-});
+}); 
