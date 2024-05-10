@@ -7,7 +7,6 @@ form.addEventListener("submit", (event) => {
   const entries = new FormData(event.target);
   const { dividend, divider } = Object.fromEntries(entries);
 
-
   try {
     // Calculate the answers without decimals
     const answer = Math.floor(dividend / divider);
@@ -42,8 +41,9 @@ form.addEventListener("submit", (event) => {
         criticalError.textContent = "Something critical went wrong. Please reload the page"
         document.body.append(criticalError);
         throw new Error("Invalid number");
-      } else {
-
+      } else { // If all checks pass, remove the "error-message" class from the result element and display the integer result of the division.
+        result.classList.remove("error-message");
+        result.innerText = Math.floor(dividend / divider);
       }
     }
   } catch (error) {
