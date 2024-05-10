@@ -33,8 +33,9 @@ form.addEventListener("submit", (event) => {
         result.innerText = "Division not performed. Both values are required in inputs. Try again.";
         throw new Error("Both values required in inputs.");
       } else if (dividerNum === 0) {
-        error.innerText = "Division not performed. Invalid number provided. Try again";
-        result.innerText = '';
+        result.classList.add("error-message");
+        result.innerText = "Division not performed. Invalid number provided. Try again";
+        throw new Error("Invalid result, divider cannot be zero.");
       } else {
         // Display the message
         error.innerText = ''; //Clears previous error messages
